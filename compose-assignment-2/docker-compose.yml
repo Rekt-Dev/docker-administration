@@ -1,1 +1,35 @@
 # create your drupal and postgres config here, based off the last assignment
+version: '2' 
+
+services:
+
+  drupal:
+    image: drupal-odin
+    build: .
+    security_opt: 
+     - seccomp:unconfined
+    ports:
+      - "8080:80"
+    volumes:
+    - drupal-modules:/var/www/html/modules
+    - drupal-modules:/var/www/html/profiles
+    - drupal-modules:/var/www/html/sites
+    - drupal-modules:/var/www/html/themes
+
+  postgres:
+   image: postgres:9.6
+   environment:
+      - POSTGRES_PASSWORD=password 
+   volumes:
+      - drupal-data:/var/lib/postgresql/data
+volumes:
+        drupal-data:
+        drupal-modules:
+        drupal-profiles:
+        drupal-sites:
+        drupal-themes:
+
+
+
+
+

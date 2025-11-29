@@ -4,10 +4,9 @@ version: '2'
 services:
 
   drupal:
-    image: drupal-odin
-    build: .
-    security_opt: 
-     - seccomp:unconfined
+     
+    build: . 
+    
     ports:
       - "8080:80"
     volumes:
@@ -19,7 +18,7 @@ services:
   postgres:
    image: postgres:9.6
    environment:
-      - POSTGRES_PASSWORD=password 
+    - POSTGRES_PASSWORD=password 
    volumes:
       - drupal-data:/var/lib/postgresql/data
 volumes:
@@ -30,6 +29,6 @@ volumes:
         drupal-themes:
 
 
-
+        
 
 

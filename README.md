@@ -1,47 +1,32 @@
-# Docker Mastery — Study Notes & Labs
+# Docker Administration
 
-Working through [Docker Mastery with Kubernetes + Swarm](https://www.udemy.com/course/docker-mastery/) by Bret Fisher. This repo tracks hands-on assignments, Compose configs, and Dockerfile experiments from the course.
+Container infrastructure reference for production Docker environments. Covers engine configuration, multi-service orchestration, networking architecture, and operational hardening across development and production contexts.
 
-## Topics Covered
+## Topics
 
-- **Dockerfile fundamentals** — multi-stage builds, caching, best practices
-- **Docker Compose** — multi-container apps, networking, volumes
-- **Swarm mode** — orchestration, services, stacks
-- **Bind mounts & volumes** — dev workflows and data persistence
-- **Health checks** — container readiness and liveness
-- **Voting app** — full-stack Compose example (Redis, Postgres, Python, Node, .NET)
+| Area | Details |
+|---|---|
+| Engine Configuration | Daemon options, storage drivers, logging, resource constraints |
+| Compose Orchestration | Multi-service stacks, dependency graphs, environment management |
+| Networking | Custom bridge networks, DNS resolution, cross-host connectivity |
+| Volume Management | Named volumes, bind mounts, backup and restore procedures |
+| Registry Operations | Push/pull workflows, private registry setup, image tagging strategies |
+| Production Patterns | Health checks, restart policies, secret injection, rolling deployments |
 
-## Repo Structure
+## Structure
 
 ```
-dockerfile-sample-1/     # simple nginx Dockerfile
-dockerfile-sample-2/     # custom app Dockerfile
-compose-sample-1/        # basic Compose setup
-compose-sample-2/        # multi-service with networking
-compose-assignment-1/    # Compose challenge
-compose-assignment-2/    # advanced Compose challenge
-example-voting-app/      # multi-tier voting app
-bindmount-sample-1/      # dev bind mount workflow
-dockerfiles/             # misc Dockerfile experiments
+├── compose/              # Multi-service Compose stacks
+├── dockerfiles/          # Production-hardened Dockerfiles
+├── networking/           # Custom network configurations
+├── volumes/              # Volume management examples
+└── ops/                  # Operational runbooks and scripts
 ```
-
-## Prerequisites
-
-- Docker Desktop or Docker Engine
-- Docker Compose v2
 
 ## Usage
 
-Run any sample:
-
 ```bash
-cd compose-sample-2
-docker compose up
-```
-
-Run the voting app:
-
-```bash
-cd example-voting-app
-docker compose up
+docker compose -f compose/<stack>.yml up -d
+docker compose logs -f
+docker compose down --volumes
 ```
